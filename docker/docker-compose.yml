@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  # nginx:
+  #   container_name: nginx
+
+  # php:
+  #   container_name: php
+
+  mysql:
+    image: mysql:5.7.21
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+       - my-network
+    volumes:
+      - db-data:/var/lib/mysql
+    container_name: mysql
+
+  memcached:
+    image: memcached:1.5.4
+    networks:
+       - my-network
+    container_name: memcached
+
+  # redis:
+  #   image: redis:3.2.11
+  #   networks:
+  #     - my-network
+  #   container_name: redis
+
+networks:
+  my-network:
+
+volumes:
+  db-data:
