@@ -54,6 +54,21 @@ tail -f docker/nginx/log/error.log
 
 ---
 
+## php
+
+### 設定ファイル
+```
+docker/php/php.ini
+docker/php/www.conf
+```
+
+### コンテナに入る
+```
+docker exec -it php /bin/bash
+```
+
+---
+
 ## mysql
 
 ### 接続

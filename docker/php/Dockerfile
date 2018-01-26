@@ -1,7 +1,13 @@
-FROM nginx:1.13.8
+FROM php:7.0.27-fpm
 
 MAINTAINER hiroki_shimada <hsnonsense5@gmail.com>
 
-ADD nginx.conf /etc/nginx/nginx.conf
-ADD fastcgi.conf /etc/nginx/fastcgi.conf
-ADD server.conf /etc/nginx/conf.d/default.conf
+RUN apt-get update \
+  && docker-php-ext-install pdo_mysql mysqli mbstring
+
+RUN apt-get update \
+  && apt-get install -y \
+    libmemcached-dev \
+    zlib1g-dev \
+  && pecl install memcached-3.0.3 \
+  && docker-php-ext-enable memcached opcache
