@@ -3,6 +3,7 @@
 ## 設定
 
 ### インストール
+適当なディレクトリにcloneするだけ
 
 ### アプリケーションの配置
 
@@ -13,7 +14,7 @@
 ### 初回起動
 
 ```
-cd docker-app/docker
+cd docker-app
 docker-compose up -d
 ```
 
