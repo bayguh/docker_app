@@ -18,6 +18,12 @@ cd docker-app
 docker-compose up -d
 ```
 
+### アクセス確認
+```
+http://localhost/index.html
+http://localhost/index.php
+```
+
 ### 停止
 
 ```
@@ -122,4 +128,9 @@ docker exec -it redis /bin/bash
 ### 起動コンテナステータス確認
 ```
 docker stats $(docker ps --format={{.Names}})
+```
+
+### リビルド
+```
+docker-compose build
 ```

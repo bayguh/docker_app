@@ -3,26 +3,33 @@ FROM php:7.0.27-fpm
 MAINTAINER hiroki_shimada <hsnonsense5@gmail.com>
 
 RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    apt-utils \
+    libxml2-dev \
+    libmcrypt-dev \
+    libicu-dev \
+    libzip-dev \
+    libmemcached-dev \
+  && apt-get clean -y
+
+RUN apt-get update \
   && docker-php-ext-install \
-    cli \
-    common \
+    mysqli \
+    pdo_mysql \
     mbstring \
     opcache \
     pdo \
+    mcrypt \
     xml \
     xmlrpc \
-    mcrypt \
-    process \
-    mysqlnd \
     bcmath \
-    intl \
-    pear \
-    timecop
+    intl
 
 RUN apt-get update \
   && pecl install apcu \
-  && pecl install memcached-3.0.3 \
-  && pecl install redis-3.2.11 \
+  && pecl install memcached \
+  && pecl install redis \
   && pecl install msgpack \
   && pecl install zip \
-  && docker-php-ext-enable apcu memcached redis msgpack zip opcache
+  && pecl install timecop-beta \
+  && docker-php-ext-enable apcu memcached redis msgpack zip timecop opcache
