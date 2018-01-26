@@ -102,7 +102,9 @@ docker exec -it memcached /bin/bash
 
 ---
 
-## 接続
+## redis
+
+### 接続
 ```
 redis-cli
 ```
