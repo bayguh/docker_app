@@ -10,8 +10,10 @@ deploy_appにアプリを配置
 
 例:
 ```
-ln -s ~/application ./deploy_app
+cd docker-app/deploy_app
+git clone [アプリソース]
 ```
+※ 最初はシンボリックリンクにしていたが、ファイルの実態を置く必要があるので注意
 
 ### ドキュメントルートの変更
 ```
