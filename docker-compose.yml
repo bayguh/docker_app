@@ -39,11 +39,13 @@ services:
       - "11211:11211"
     container_name: memcached
 
-  # redis:
-  #   image: redis:3.2.11
-  #   networks:
-  #     - my-network
-  #   container_name: redis
+  redis:
+    image: redis:3.2.11
+    networks:
+      - my-network
+    ports:
+      - "6379:6379"
+    container_name: redis
 
 networks:
   my-network:
