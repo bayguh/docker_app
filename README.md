@@ -113,3 +113,13 @@ redis-cli
 ```
 docker exec -it redis /bin/bash
 ```
+
+---
+---
+
+## docker
+
+### 起動コンテナステータス確認
+```
+docker stats $(docker ps --format={{.Names}})
+```

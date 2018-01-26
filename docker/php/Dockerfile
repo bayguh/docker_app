@@ -3,11 +3,26 @@ FROM php:7.0.27-fpm
 MAINTAINER hiroki_shimada <hsnonsense5@gmail.com>
 
 RUN apt-get update \
-  && docker-php-ext-install pdo_mysql mysqli mbstring
+  && docker-php-ext-install \
+    cli \
+    common \
+    mbstring \
+    opcache \
+    pdo \
+    xml \
+    xmlrpc \
+    mcrypt \
+    process \
+    mysqlnd \
+    bcmath \
+    intl \
+    pear \
+    timecop
 
 RUN apt-get update \
-  && apt-get install -y \
-    libmemcached-dev \
-    zlib1g-dev \
+  && pecl install apcu \
   && pecl install memcached-3.0.3 \
-  && docker-php-ext-enable memcached opcache
+  && pecl install redis-3.2.11 \
+  && pecl install msgpack \
+  && pecl install zip \
+  && docker-php-ext-enable apcu memcached redis msgpack zip opcache
