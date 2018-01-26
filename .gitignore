@@ -32,3 +32,6 @@ application/logs/*
 application/cache/smarty/compiled/*
 tests/logs/*
 !.gitkeep
+
+docker/nginx/log/access.log
+docker/nginx/log/error.log
