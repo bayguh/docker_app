@@ -17,6 +17,7 @@ services:
        - my-network
     volumes:
       - db-data:/var/lib/mysql
+      - ./mysql:/etc/mysql/conf.d
     container_name: mysql
 
   memcached:
