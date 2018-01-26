@@ -35,3 +35,9 @@ tests/logs/*
 
 docker/nginx/log/access.log
 docker/nginx/log/error.log
+
+deploy_app/*
+!deploy_app/index.html
+!deploy_app/index.php
+!deploy_app/memcached.php
+!deploy_app/mysql.php

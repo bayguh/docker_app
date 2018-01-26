@@ -30,13 +30,15 @@ services:
     image: mysql:5.7.21
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sample_database
     networks:
        - my-network
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-      - ./docker/mysql:/etc/mysql/conf.d
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/mysql/sample.sql:/docker-entrypoint-initdb.d/initial.sql
     container_name: mysql
 
   memcached:

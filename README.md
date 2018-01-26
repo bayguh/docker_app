@@ -6,6 +6,21 @@
 適当なディレクトリにcloneするだけ
 
 ### アプリケーションの配置
+deploy_appにアプリを配置
+
+例:
+```
+ln -s ~/application ./deploy_app
+
+```
+
+### ドキュメントルートの変更
+```
+vi docker/nginx/server.conf
+
+下記を変更
+>>  root   /var/www/app;
+```
 
 ---
 
@@ -22,6 +37,8 @@ docker-compose up -d
 ```
 http://localhost/index.html
 http://localhost/index.php
+http://localhost/memcached.php
+http://localhost/mysql.php
 ```
 
 ### 停止
