@@ -36,7 +36,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/mysql
+      - my-db-data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/mysql/sample.sql:/docker-entrypoint-initdb.d/initial.sql
     container_name: mysql
@@ -55,10 +55,13 @@ services:
       - my-network
     ports:
       - "6379:6379"
+    volumes:
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
     container_name: redis
 
 networks:
   my-network:
 
 volumes:
-  db-data:
+  my-db-data:

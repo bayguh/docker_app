@@ -41,3 +41,4 @@ deploy_app/*
 !deploy_app/index.php
 !deploy_app/memcached.php
 !deploy_app/mysql.php
+!deploy_app/redis.php

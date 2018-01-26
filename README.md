@@ -21,6 +21,17 @@ vi docker/nginx/server.conf
 >>  root   /var/www/app;
 ```
 
+### 接続先ホスト変更
+
+アプリケーションソースに記載されているホスト名を設定
+```
+プロセス => ホスト名
+
+mysql     => mysql
+redis     => redis
+memcached => memcached
+```
+
 ---
 
 ## 起動・停止
@@ -123,6 +134,11 @@ docker exec -it memcached /bin/bash
 redis-cli
 ```
 
+### 設定ファイル
+```
+docker/redis/redis.conf
+```
+
 ### コンテナに入る
 ```
 docker exec -it redis /bin/bash
@@ -139,6 +155,7 @@ http://localhost/index.html
 http://localhost/index.php
 http://localhost/memcached.php
 http://localhost/mysql.php
+http://localhost/redis.php
 ```
 
 ---
