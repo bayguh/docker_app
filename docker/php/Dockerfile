@@ -5,12 +5,13 @@ MAINTAINER hiroki_shimada <hsnonsense5@gmail.com>
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     apt-utils \
-    libxml2-dev \
-    libmcrypt-dev \
     libicu-dev \
+    libmcrypt-dev \
+    libxml2-dev \
     libzip-dev \
     libmemcached-dev \
-  && apt-get clean -y
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update \
   && docker-php-ext-install \
@@ -23,13 +24,17 @@ RUN apt-get update \
     xml \
     xmlrpc \
     bcmath \
-    intl
+    intl \
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update \
   && pecl install apcu \
-  && pecl install memcached \
   && pecl install redis \
+  && pecl install memcached \
   && pecl install msgpack \
-  && pecl install zip \
   && pecl install timecop-beta \
-  && docker-php-ext-enable apcu memcached redis msgpack zip timecop opcache
+  && pecl install zip \
+  && docker-php-ext-enable apcu memcached redis msgpack zip timecop opcache \
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/*
